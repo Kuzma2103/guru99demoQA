@@ -9,10 +9,17 @@ public class HomePage extends BasePage {
     }
 
     By errorBy = By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/div/ul/li/ul/li/span");
+    By successRegBy = By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div/div/ul/li/ul/li/span");
 
     public HomePage verificationLoginFailed(String expectedText) {
         String errorMessage = readText(errorBy);
         assertStringEquals(errorMessage, expectedText);
+        return this;
+    }
+
+    public HomePage verificationRegister(String expectedText) {
+        String successMessage = readText(successRegBy);
+        assertStringEquals(successMessage, expectedText);
         return this;
     }
 }

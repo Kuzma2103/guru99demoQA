@@ -17,6 +17,15 @@ public class LogInPage extends BasePage {
     By passwordBy = By.id("pass");
     By loginbuttonBy = By.id("send2");
 
+    //registration
+    By registerBy = By.xpath("//*[@id=\"header-account\"]/div/ul/li[5]/a");
+    By firstNameBy = By.id("firstname");
+    By lastNameBy = By.id("lastname");
+    By regEmailBy = By.id("email_address");
+    By regPasswordBy = By.id("password");
+    By confirmPasswordBy = By.id("confirmation");
+    By registerButtonBy = By.xpath("//*[@id=\"form-validate\"]/div[2]/button/span/span");
+
     public LogInPage basePage() {
         driver.get(baseURL);
         return this;
@@ -28,6 +37,18 @@ public class LogInPage extends BasePage {
         writeText(emailBy, email);
         writeText(passwordBy, password);
         click(loginbuttonBy);
+        return this;
+    }
+
+    public LogInPage registration(String firstName, String lastName, String reg_email, String reg_password) {
+        click(accountBy);
+        click(registerBy);
+        writeText(firstNameBy, firstName);
+        writeText(lastNameBy, lastName);
+        writeText(regEmailBy, reg_email);
+        writeText(regPasswordBy, reg_password);
+        writeText(confirmPasswordBy, reg_password);
+        click(registerButtonBy);
         return this;
     }
 }
