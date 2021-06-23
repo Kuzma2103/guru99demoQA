@@ -16,6 +16,12 @@ public class PropertyManager {
     private static String reg_email;
     private static String reg_password;
 
+    // purchase as guest
+    private static String address;
+    private static String city;
+    private static String zip;
+    private static String telephone;
+
 
 
     public static PropertyManager getInstance() {
@@ -39,6 +45,12 @@ public class PropertyManager {
         lastName = prop.getProperty("lastName");
         reg_email = prop.getProperty("reg_email");
         reg_password = prop.getProperty("reg_password");
+
+        // purchase as guest
+        address = prop.getProperty("address");
+        city = prop.getProperty("city");
+        zip = prop.getProperty("zip");
+        telephone = prop.getProperty("telephone");
 
 
         return instance;
@@ -74,5 +86,21 @@ public class PropertyManager {
 
     public String getReg_password() {
         return reg_password;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public String getTelephone() {
+        return telephone;
     }
 }

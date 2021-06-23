@@ -10,6 +10,7 @@ public class HomePage extends BasePage {
 
     By errorBy = By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/div/ul/li/ul/li/span");
     By successRegBy = By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div/div/ul/li/ul/li/span");
+    By successGuestPurchaseBy = By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/h2");
 
     public HomePage verificationLoginFailed(String expectedText) {
         String errorMessage = readText(errorBy);
@@ -20,6 +21,12 @@ public class HomePage extends BasePage {
     public HomePage verificationRegister(String expectedText) {
         String successMessage = readText(successRegBy);
         assertStringEquals(successMessage, expectedText);
+        return this;
+    }
+
+    public HomePage verificationGuestPurchase(String expectedText) {
+        String successPurchaseMessage = readText(successGuestPurchaseBy);
+        assertStringEquals(successPurchaseMessage, expectedText);
         return this;
     }
 }
