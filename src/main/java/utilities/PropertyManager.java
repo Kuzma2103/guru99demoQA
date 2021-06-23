@@ -6,6 +6,9 @@ import java.util.Properties;
 public class PropertyManager {
 
     private static String driverPath;
+    private static String baseURL;
+    private static String email;
+    private static String password;
 
     public static PropertyManager getInstance() {
         Properties prop = new Properties();
@@ -19,11 +22,27 @@ public class PropertyManager {
         }
 
         driverPath = prop.getProperty("driverPath");
+        baseURL = prop.getProperty("baseURL");
+        email = prop.getProperty("email");
+        password = prop.getProperty("password");
+
 
         return instance;
     }
 
     public String getDriverPath() {
         return driverPath;
+    }
+
+    public String getURL() {
+        return baseURL;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

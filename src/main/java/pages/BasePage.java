@@ -30,9 +30,9 @@ public class BasePage {
         driver.findElement(elementBy).sendKeys(text);
     }
 
-    public void readText(By elementBy) {
+    public String readText(By elementBy) {
         waitVisibility(elementBy);
-        driver.findElement(elementBy).getText();
+        return driver.findElement(elementBy).getText();
     }
 
     public void assertStringEquals(String string, String expectedText) {
