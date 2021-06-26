@@ -16,6 +16,7 @@ public class FailedLoginTest extends BaseTest {
         logInPage = new LogInPage(driver);
 
         logInPage.basePage();
+        logInPage.navigateToLogIn();
         logInPage.login(PropertyManager.getInstance().getEmail(), PropertyManager.getInstance().getPassword());
 
         try {
