@@ -31,11 +31,15 @@ public class LogInPage extends BasePage {
         return this;
     }
 
-    public LogInPage login(String email, String password) {
+    public LogInPage navigateToLogIn() {
         click(accountBy);
         click(loginBy);
-        writeText(emailBy, email);
-        writeText(passwordBy, password);
+        return this;
+    }
+
+    public LogInPage login(String reg_email, String reg_password) {
+        writeText(emailBy, reg_email);
+        writeText(passwordBy, reg_password);
         click(loginbuttonBy);
         return this;
     }
