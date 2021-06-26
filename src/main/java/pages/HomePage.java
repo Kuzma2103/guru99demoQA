@@ -12,6 +12,7 @@ public class HomePage extends BasePage {
     By successRegBy = By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div/div/ul/li/ul/li/span");
     By successGuestPurchaseBy = By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/h2");
     By userNameBy = By.className("welcome-msg");
+    By pageTitleBy = By.className("page-title"); // this is hidden when user logged out, so in test you should pass the word "TV" for the assertion.
 
     public HomePage verificationLoginFailed(String expectedText) {
         String errorMessage = readText(errorBy);
@@ -34,6 +35,12 @@ public class HomePage extends BasePage {
     public HomePage verificationUserLogIn(String expectedText) {
         String user_name = readText(userNameBy);
         assertStringEquals(user_name, expectedText);
+        return this;
+    }
+
+    public HomePage verificationLogout(String expectedText) {
+        String user_logged_out = readText(pageTitleBy);
+        assertStringEquals(user_logged_out, expectedText);
         return this;
     }
 }
