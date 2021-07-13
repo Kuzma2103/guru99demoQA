@@ -1,6 +1,6 @@
 package pages;
 
-import org.openqa.selenium.By;
+import methods.LogoutMethod;
 import org.openqa.selenium.WebDriver;
 
 public class UserProfilePage extends BasePage {
@@ -8,12 +8,11 @@ public class UserProfilePage extends BasePage {
         super(driver);
     }
 
-    By accountBy = By.xpath("//*[@id=\"header\"]/div/div[2]/div/a/span[2]");
-    By logoutBy = By.className("last");
+    public LogoutMethod method;
 
-    public UserProfilePage logout() {
-        click(accountBy);
-        click(logoutBy);
+    public UserProfilePage logoutUser() {
+        method = new LogoutMethod(driver);
+        method.logout();
         return this;
     }
 }

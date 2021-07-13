@@ -27,11 +27,11 @@ public class BaseTestWithLogin {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+        driver.get(PropertyManager.getInstance().getURL());
 
         logInPage = new LogInPage(driver);
-        logInPage.basePage();
-        logInPage.navigateToLogIn();
-        logInPage.login(PropertyManager.getInstance().getReg_email(), PropertyManager.getInstance().getReg_password());
+
+        logInPage.loginUser();
     }
 
     @After

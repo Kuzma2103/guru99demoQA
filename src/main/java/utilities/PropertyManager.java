@@ -1,27 +1,20 @@
 package utilities;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.Properties;
 
 public class PropertyManager {
 
     private static String driverPath;
     private static String baseURL;
-    private static String email;
-    private static String password;
+    private static String bad_password;
 
     //    registration
     private static String firstName;
     private static String lastName;
     private static String reg_email;
     private static String reg_password;
-
-    // purchase as guest
-    private static String address;
-    private static String city;
-    private static String zip;
-    private static String telephone;
-
 
 
     public static PropertyManager getInstance() {
@@ -37,8 +30,7 @@ public class PropertyManager {
 
         driverPath = prop.getProperty("driverPath");
         baseURL = prop.getProperty("baseURL");
-        email = prop.getProperty("email");
-        password = prop.getProperty("password");
+        bad_password = prop.getProperty("bad_password");
 
         //        registration
         firstName = prop.getProperty("firstName");
@@ -46,14 +38,21 @@ public class PropertyManager {
         reg_email = prop.getProperty("reg_email");
         reg_password = prop.getProperty("reg_password");
 
-        // purchase as guest
-        address = prop.getProperty("address");
-        city = prop.getProperty("city");
-        zip = prop.getProperty("zip");
-        telephone = prop.getProperty("telephone");
-
-
         return instance;
+    }
+
+    public static void setProperty(String key, String value) {
+
+        Properties editProperties = new Properties();
+
+        try {
+            FileInputStream fileEdit = new FileInputStream("src/main/resources/configuration.properties");
+            editProperties.load(fileEdit);
+            editProperties.setProperty(key, value);
+            editProperties.store(new FileOutputStream("src/main/resources/configuration.properties"), null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public String getDriverPath() {
@@ -64,12 +63,8 @@ public class PropertyManager {
         return baseURL;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
+    public String getBad_password() {
+        return bad_password;
     }
 
     public String getFirstName() {
@@ -88,19 +83,4 @@ public class PropertyManager {
         return reg_password;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getZip() {
-        return zip;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
 }
